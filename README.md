@@ -81,4 +81,4 @@ https://github.com/user-attachments/assets/d413a15a-9124-4380-9300-97179827fafc
 
 - WordCloud 词云生成器插件由 [Noonisy](https://www.noonisy.com) 开发
 - 版本 1.0.0
-- 使用MIT许可证
+- 使用 MIT 许可证

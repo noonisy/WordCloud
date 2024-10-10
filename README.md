@@ -35,6 +35,7 @@ https://github.com/user-attachments/assets/d413a15a-9124-4380-9300-97179827fafc
         <div class="mdui-card-primary-title">词云</div>
         <div class="mdui-card-primary-subtitle">共计<?php echo WordCloud_Plugin::getNumWords(); ?>个词</div>
         <?php echo "<script>
+        // 如果使用了 pjax 才使用，tag.html 自定义
         $(document).on('pjax:popstate', function (event) {
             if (event.currentTarget.URL.endsWith('/tag.html')) {
                 event.preventDefault();

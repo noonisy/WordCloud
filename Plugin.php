@@ -101,7 +101,7 @@ class WordCloud_Plugin implements Typecho_Plugin_Interface
         $minFontSize = new Typecho_Widget_Helper_Form_Element_Text(
             'minFontSize',
             null,
-            '15',
+            '12',
             _t('最小字体大小'),
             _t('设置文本中最小的字体大小，默认12px')
         );
@@ -111,7 +111,7 @@ class WordCloud_Plugin implements Typecho_Plugin_Interface
         $maxFontSize = new Typecho_Widget_Helper_Form_Element_Text(
             'maxFontSize',
             null,
-            '40',
+            '60',
             _t('最大字体大小'),
             _t('设置文本中最大的字体大小，默认60px')
         );
@@ -131,7 +131,7 @@ class WordCloud_Plugin implements Typecho_Plugin_Interface
         $rotationStep = new Typecho_Widget_Helper_Form_Element_Text(
             'rotationStep',
             null,
-            '10',
+            '45',
             _t('旋转角度的最小变化度数'),
             _t('设置文本旋转角度的最小变化幅度，数值越小，旋转角度的变化角度越多')
         );
@@ -213,7 +213,7 @@ class WordCloud_Plugin implements Typecho_Plugin_Interface
         $customWordCount = new Typecho_Widget_Helper_Form_Element_Textarea(
             'customWordCount',
             null,
-            'noonisy:668',
+            '',
             _t('自定义词出现的数量'),
             _t('设置某个词出现的数量，格式为："词:数量"，每行一个')
         );
@@ -223,15 +223,24 @@ class WordCloud_Plugin implements Typecho_Plugin_Interface
         $ignoreWords = new Typecho_Widget_Helper_Form_Element_Textarea(
             'ignoreWords',
             null, 
-            '的\n是\n在',
+            '',
             _t('需要忽略的词'), 
             _t('设置要在词云中忽略的词，每行一个<hr>
-        <div style="font-family:consolas; background:#E8EFD1; padding:8px">在合适的地方，例如 page-tags.php 加入代码: <br> <b style="color:#ec5072"> $plugins = Typecho_Plugin::export(); </b> <br> 后面再加入代码: <br>
-            <b style="color:#ec5072">&lt;?php if (isset($plugins[\'activated\'][\'WordCloud\'])) { ?>
+        <div style="font-family:consolas; background:#E8EFD1; padding:8px">在合适的地方，例如 page-tags.php 加入代码: <br> <b style="color:#ec5072">&lt;?php if (isset($plugins[\'activated\'][\'WordCloud\'])) { ?>
             <br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;div>共计&lt;?php echo WordCloud_Plugin::getNumWords(); ?>个词&lt;/div>
             <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;?php WordCloud_Plugin::renderWordCloud(); ?>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;?php echo "&lt;script><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;$(document).on(\'pjax:popstate\', function (event) { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (event.currentTarget.URL.endsWith(\'/tag.html\')) {
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;event.preventDefault();<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$.pjax.defaults.maxCacheLength = 0;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;location = event.currentTarget.URL;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;});
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/script>";<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;WordCloud_Plugin::renderWordCloud();
             <br>
             &lt;?php } ?> </b>
             </div>')

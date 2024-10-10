@@ -205,7 +205,7 @@ class WordCloud_Plugin implements Typecho_Plugin_Interface
             null,
             '1000 * 60 * 60 * 24',
             _t('本地浏览器缓存过期时间'),
-            _t('设置本地浏览器缓存过期时间，单位为毫秒')
+            _t('设置本地浏览器缓存过期时间，单位为毫秒. 修改后需要选择重新预处理分词')
         );
         $form->addInput($localCacheExpire);
 
@@ -215,7 +215,7 @@ class WordCloud_Plugin implements Typecho_Plugin_Interface
             null,
             '',
             _t('自定义词出现的数量'),
-            _t('设置某个词出现的数量，格式为："词:数量"，每行一个')
+            _t('设置某个词出现的数量，格式为："词:数量"，每行一个. 修改后需要选择重新预处理分词')
         );
         $form->addInput($customWordCount);
 
@@ -225,7 +225,7 @@ class WordCloud_Plugin implements Typecho_Plugin_Interface
             null, 
             '',
             _t('需要忽略的词'), 
-            _t('设置要在词云中忽略的词，每行一个<hr>
+            _t('设置要在词云中忽略的词，每行一个. 修改后需要选择重新预处理分词<hr>
         <div style="font-family:consolas; background:#E8EFD1; padding:8px">在合适的地方，例如 page-tags.php 加入代码: <br> <b style="color:#ec5072">&lt;?php if (isset($plugins[\'activated\'][\'WordCloud\'])) { ?>
             <br>
              &nbsp;&nbsp;&nbsp;&nbsp;&lt;div>词云&lt;/div>

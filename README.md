@@ -5,7 +5,7 @@ WordCloud 是一个为 Typecho 系统开发的词云生成器插件。它可以�
 
 ## Display Effect
 
-
+https://github.com/user-attachments/assets/d413a15a-9124-4380-9300-97179827fafc
 
 ## Features
 

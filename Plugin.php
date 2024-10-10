@@ -228,6 +228,8 @@ class WordCloud_Plugin implements Typecho_Plugin_Interface
             _t('设置要在词云中忽略的词，每行一个<hr>
         <div style="font-family:consolas; background:#E8EFD1; padding:8px">在合适的地方，例如 page-tags.php 加入代码: <br> <b style="color:#ec5072">&lt;?php if (isset($plugins[\'activated\'][\'WordCloud\'])) { ?>
             <br>
+             &nbsp;&nbsp;&nbsp;&nbsp;&lt;div>词云&lt;/div>
+            <br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;div>共计&lt;?php echo WordCloud_Plugin::getNumWords(); ?>个词&lt;/div>
             <br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;?php echo "&lt;script><br>

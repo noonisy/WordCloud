@@ -32,19 +32,12 @@ https://github.com/user-attachments/assets/d413a15a-9124-4380-9300-97179827fafc
 
     // 示例代码
     <?php if (isset($plugins['activated']['WordCloud'])){ ?>
+        <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/echarts-wordcloud@2.1.0/dist/echarts-wordcloud.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/segmentit@2.0.3/dist/umd/segmentit.min.js"></script>
         <div class="mdui-card-primary-title">词云</div>
         <div class="mdui-card-primary-subtitle">共计<?php echo WordCloud_Plugin::getNumWords(); ?>个词</div>
-        <?php echo "<script>
-        // 如果使用了 pjax 才使用，tag.html 自定义
-        $(document).on('pjax:popstate', function (event) {
-            if (event.currentTarget.URL.endsWith('/tag.html')) {
-                event.preventDefault();
-                $.pjax.defaults.maxCacheLength = 0;
-                location = event.currentTarget.URL;
-            }
-        });
-        </script>";
-        WordCloud_Plugin::renderWordCloud(); ?>
+        <?php WordCloud_Plugin::renderWordCloud(); ?>
     <?php } ?>
    ```
 
@@ -81,5 +74,5 @@ https://github.com/user-attachments/assets/d413a15a-9124-4380-9300-97179827fafc
 ## Copyright
 
 - WordCloud 词云生成器插件由 [Noonisy](https://www.noonisy.com) 开发
-- 版本 1.0.0
+- 版本 1.0.1
 - 使用 MIT 许可证

@@ -6,7 +6,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
  * 
  * @package WordCloud
  * @author Noonisy
- * @version 1.0.0
+ * @version 1.0.1
  * @link https://www.noonisy.com
  */
 class WordCloud_Plugin implements Typecho_Plugin_Interface
@@ -225,27 +225,7 @@ class WordCloud_Plugin implements Typecho_Plugin_Interface
             null, 
             '',
             _t('需要忽略的词'), 
-            _t('设置要在词云中忽略的词，每行一个. 修改后需要选择重新预处理分词<hr>
-        <div style="font-family:consolas; background:#E8EFD1; padding:8px">在合适的地方，例如 page-tags.php 加入代码: <br> <b style="color:#ec5072">&lt;?php if (isset($plugins[\'activated\'][\'WordCloud\'])) { ?>
-            <br>
-             &nbsp;&nbsp;&nbsp;&nbsp;&lt;div>词云&lt;/div>
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;div>共计&lt;?php echo WordCloud_Plugin::getNumWords(); ?>个词&lt;/div>
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;?php echo "&lt;script><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;$(document).on(\'pjax:popstate\', function (event) { <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (event.currentTarget.URL.endsWith(\'/tag.html\')) {
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;event.preventDefault();<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$.pjax.defaults.maxCacheLength = 0;<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;location = event.currentTarget.URL;<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;});
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/script>";<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;WordCloud_Plugin::renderWordCloud();
-            <br>
-            &lt;?php } ?> </b>
-            </div>')
+            _t('设置要在词云中忽略的词，每行一个. 修改后需要选择重新预处理分词<hr>')
         );
         $form->addInput($ignoreWords);
     }
@@ -300,10 +280,6 @@ class WordCloud_Plugin implements Typecho_Plugin_Interface
             $allContent = json_encode(['content' => $allContent]);
 
             echo '<div id="wordcloud" style="width: 100%; height: 500px; margin: 0 auto;"></div>';
-            echo '<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>';
-            echo '<script src="https://cdn.jsdelivr.net/npm/echarts-wordcloud@2.1.0/dist/echarts-wordcloud.min.js"></script>';
-            // // https://cdn.jsdelivr.net/npm/segmentit@2.0.3/dist/umd/segmentit.min.js
-            echo '<script src="/usr/plugins/WordCloud/segmentit.min.js"></script>';
 
             echo '<script>
                 // 预处理文本函数
